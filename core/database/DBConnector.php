@@ -14,8 +14,8 @@ abstract class DBConnector
         $db = &self::$pdo;
         if ($db === null) {
             try {
-                $dsn = sprintf('%s:host=%s;dbname=%s', 'mysql', 'localhost', 'integer_spiral');
-                $db = new PDO($dsn, 'root', 'root');
+                $dsn = sprintf('%s:host=%s;dbname=%s', 'mysql', 'ulsq0qqx999wqz84.chr7pe7iynqr.eu-west-1.rds.amazonaws.com', 'khypvpajtdmcfvls');
+                $db = new PDO($dsn, 'mkzsohlx2kuz9kjj', 't113zyjlt0h0dxht');
                 $db->exec('set names utf8;');
             } catch (PDOException $e) {
                 exit("Database fatal error!");
