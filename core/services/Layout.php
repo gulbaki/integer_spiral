@@ -77,7 +77,7 @@ class Layout extends Base
         ];
         $fields['layout_matrix'] = html_entity_decode($this->integerSpiral([[]], $fields['row'], $fields['col']));
         
-        var_dump($fields['layout_matrix'] );
+      
         $this->params = $fields;
         $this->validator->validateByFields($fields);
 
@@ -88,6 +88,8 @@ class Layout extends Base
             );
         }
 
+        var_dump($fields);
+        exit;
         return $this->mLayout->insert($this->validator->clear);
     }
 
