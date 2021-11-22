@@ -14,10 +14,7 @@ abstract class DBConnector
         $db = &self::$pdo;
         if ($db === null) {
             try {
-                $url = parse_url(getenv("CLEARDB_DATABASE_URL"));
-
-                var_dump($url);
-                exit;
+                
                // $dsn = sprintf('%s:host=%s;dbname=%s', 'mysql', 'localhost', 'integer_spiral');
                 //$db = new PDO($dsn, 'root', 'root');
 
@@ -27,6 +24,10 @@ abstract class DBConnector
 
                 
             } catch (PDOException $e) {
+                $url = parse_url(getenv("CLEARDB_DATABASE_URL"));
+
+                var_dump($url);
+                exit;
                 exit("Database fatal error!");
             }
         }
