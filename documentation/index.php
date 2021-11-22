@@ -45,6 +45,7 @@ header('Access-Control-Allow-Headers: Origin, Content-Type, X-Auth-Token , Autho
     window.onload = function() {
       // Begin Swagger UI call region
       const ui = SwaggerUIBundle({
+        url: "https://integer-spiral.herokuapp.com/documentation/api.php",
         dom_id: '#swagger-ui',
         deepLinking: true,
         presets: [
@@ -58,7 +59,7 @@ header('Access-Control-Allow-Headers: Origin, Content-Type, X-Auth-Token , Autho
         validatorUrl: "null"
       });
       // End Swagger UI call region
-      console.log( "baki");
+      console.log( "asdasd");
       window.ui = ui;
    
 
