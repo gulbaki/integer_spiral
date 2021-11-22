@@ -55,11 +55,11 @@ class DBDriver implements DBDriverInterface
 
         
         $statement = $this->db->prepare($sql);
-
-        $statement->execute($params);
-        self::checkErrors($statement);
         var_dump($statement);
         exit;
+        $statement->execute($params);
+        self::checkErrors($statement);
+        
         return $this->db->lastInsertId();
     }
 
