@@ -39,7 +39,7 @@ class Layout extends Base
         ]
     ];
 
-    private $mLayout;
+    private LayoutModel $mLayout;
 
     public function __construct(LayoutModel $mLayout, Validator $validator)
     {
@@ -98,7 +98,7 @@ class Layout extends Base
      * @throws NotFoundException
      * @throws ValidatorException
      */
-    public function getOne($id, $x, $y)
+    public function getOne($id, $x, $y): mixed
     {
         $idAlias = $this->mLayout->getIdAlias();
        

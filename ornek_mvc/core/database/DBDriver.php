@@ -10,10 +10,12 @@ use PDOStatement;
 
 class DBDriver implements DBDriverInterface
 {
-    private $db;
+    private object $db;
+    
 
     public function __construct(PDO $pdo)
     {
+        
         $this->db = $pdo;
     }
 
@@ -42,7 +44,7 @@ class DBDriver implements DBDriverInterface
      * @return mixed|string
      * @throws DataBaseException
      */
-    public function create(string $table, array $params)
+    public function create(string $table, array $params): mixed
     {
         $paramsKeys = array_keys($params);
 
@@ -65,7 +67,7 @@ class DBDriver implements DBDriverInterface
      * @return array|bool|mixed
      * @throws DataBaseException
      */
-    public function read(string $sql, $fetch = self::FETCH_ALL, array $params = [])
+    public function read(string $sql, int $fetch = self::FETCH_ALL, array $params = []): mixed
     {
         $statement = $this->db->prepare($sql);
         $statement->execute($params);
@@ -83,7 +85,7 @@ class DBDriver implements DBDriverInterface
         );
     }
 
-    private function mapParams(array $paramKeys)
+    private function mapParams(array $paramKeys): array
     {
         $mapped = [];
         foreach ($paramKeys as $key) {
@@ -100,7 +102,7 @@ class DBDriver implements DBDriverInterface
      * @return bool|int|mixed
      * @throws DataBaseException
      */
-    public function update(string $table, array $setParams, string $where, array $whereParams)
+    public function update(string $table, array $setParams, string $where, array $whereParams): mixed
     {
         if (!empty(array_intersect_key($setParams, $whereParams))) {
             throw new DataBaseException('The same keys in $setParams and $whereParams');
@@ -121,10 +123,10 @@ class DBDriver implements DBDriverInterface
      * @param string $table
      * @param string $where
      * @param array $whereParams
-     * @return int|mixed
+     * @return mixed
      * @throws DataBaseException
      */
-    public function delete(string $table, string $where, array $whereParams)
+    public function delete(string $table, string $where, array $whereParams): mixed
     {
         $sql = "DELETE FROM $table WHERE $where;";
         $statement = $this->db->prepare($sql);

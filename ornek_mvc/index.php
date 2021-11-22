@@ -1,6 +1,8 @@
 
 <?php
 
+
+
  
 // function spiralPrint($m, $n, &$a)
 // {
@@ -166,7 +168,7 @@ include_once("vendor/autoload.php");
 $router = new core\Route();
 
 
-$router->run('/', [controller\Layout::class, 'index'], 'get');
+$router->run('/', [controller\Layout::class, 'getLayout'], 'get');
 
 $router->run('/api/create-layout', [controller\Layout::class, 'createLayout'], 'post');
 $router->run('/api/get-layout', [controller\Layout::class, 'getLayout'], 'get');

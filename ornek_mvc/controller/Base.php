@@ -10,25 +10,20 @@ use core\dependencies\ServiceBuilderBox;
 use core\exceptions\NotFoundException;
 use core\Registry;
 use core\Request;
+use JetBrains\PhpStorm\NoReturn;
 use model\Texts;
 use model\User;
 use core\Validator;
 
 abstract class Base
 {
-    protected $title = '';
-    protected $menu;
-    protected $sidebar;
-    protected $content;
-    protected $footer;
 
-    protected $message;
+    protected string $message;
 
-    protected $mainTemplate = 'v_main.php';
-    protected $request;
-    protected $container;
+    protected object $request;
+    protected object $container;
 
-    private $registry;
+    private object $registry;
 
     public function __construct()
     {
@@ -43,7 +38,7 @@ abstract class Base
      * @param string $path
      * @param string $root
      */
-    protected function redirect(string $path, string $root = ROOT)
+    #[NoReturn] protected function redirect(string $path, string $root = ROOT)
     {
         header('Location: ' . $root . $path);
         exit();

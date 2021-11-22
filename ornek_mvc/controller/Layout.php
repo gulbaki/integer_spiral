@@ -28,10 +28,11 @@ class Layout extends Base
     *   @OA\Response (response="404", description="Not Found"),
     * )
     */
-     /**
+    /**
      * @throws NotFoundException
      * @throws RequestException
      * @throws ValidatorException
+     * @throws \core\exceptions\DIContainerException
      */
     public function createLayout()
     {
@@ -75,7 +76,7 @@ class Layout extends Base
      */
     public function getLayout()
     {
-
+       
         $layoutService = $this->container->fabricate('layout-service');
 
         try {
@@ -90,50 +91,53 @@ class Layout extends Base
     }
 
     /**
-    * @OA\Get(path="/ornek_mvc/api/get-value-of-layout/{id}/{x}/{y}", tags={"Layout"},
-    *   @OA\Parameter(
-    *        parameter="layoutId",
-    *        name="id",
-    *        description="Enter LayoutId  ",
-    *         @OA\Schema(
-    *         type="integer"
-    *         ),
-    *        in="path",
-    *        required=true,
-    * ),
-    *   @OA\Parameter(
-    *        parameter="row",
-    *        name="x",
-    *        description="Enter x coordinates  ",
-    *         @OA\Schema(
-    *         type="integer"
-    *         ),
-    *        in="path",
-    *        required=true,
-    * ),
-    *   @OA\Parameter(
-    *        parameter="col",
-    *        name="y",
-    *        description="Enter y coordinates  ",
-    *         @OA\Schema(
-    *         type="integer"
-    *         ),
-    *        in="path",
-    *        required=true,
-    * ),
-    *
-    *   @OA\Response (response="200", description="Success"),
-    *   @OA\Response (response="404", description="Not Found"),
-    *   security={ {"bearerAuth":{}}}
-    * )
-    */
+     * @OA\Get(path="/ornek_mvc/api/get-value-of-layout/{id}/{x}/{y}", tags={"Layout"},
+     *   @OA\Parameter(
+     *        parameter="layoutId",
+     *        name="id",
+     *        description="Enter LayoutId  ",
+     *         @OA\Schema(
+     *         type="integer"
+     *         ),
+     *        in="path",
+     *        required=true,
+     * ),
+     *   @OA\Parameter(
+     *        parameter="row",
+     *        name="x",
+     *        description="Enter x coordinates  ",
+     *         @OA\Schema(
+     *         type="integer"
+     *         ),
+     *        in="path",
+     *        required=true,
+     * ),
+     *   @OA\Parameter(
+     *        parameter="col",
+     *        name="y",
+     *        description="Enter y coordinates  ",
+     *         @OA\Schema(
+     *         type="integer"
+     *         ),
+     *        in="path",
+     *        required=true,
+     * ),
+     *
+     *   @OA\Response (response="200", description="Success"),
+     *   @OA\Response (response="404", description="Not Found"),
+     *   security={ {"bearerAuth":{}}}
+     * )
+     * @throws \core\exceptions\DIContainerException
+     */
     public function getValueOfLayout($id, $x, $y)
     {
-       
+
         $layoutService = $this->container->fabricate('layout-service');
-        
+
         $layout = $layoutService->getOne($id, $x, $y);
-        if($layout['layout_value'])
+
+
+        if($layout['layout_value'] )
             echo ("Coordinates: " .$layout['layout_value']);
         else 
             echo ("Not Found: " . $x . ' or ' . $y . ' Coordinates');

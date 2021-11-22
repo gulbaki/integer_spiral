@@ -7,12 +7,12 @@ use core\Validator;
 
 abstract class Base
 {
-    protected $validator;
-    protected $params = [];
+    protected Validator $validator;
+    protected array $params = [];
 
     /**
      * Base constructor.
-     * @param $validator
+     * @param Validator $validator
      */
     public function __construct(Validator $validator)
     {

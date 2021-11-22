@@ -6,9 +6,9 @@ use core\database\DBDriverInterface;
 
 abstract class Base
 {
-    protected $db;
-    protected $tableName;
-    protected $idAlias;
+    protected object $db;
+    protected string $tableName;
+    protected string $idAlias;
 
     /**
      * BaseModel constructor.

@@ -8,7 +8,7 @@ use core\exceptions\DIContainerException;
 
 class DIContainer
 {
-    private $storage = [];
+    private array $storage = [];
 
     public function register(RegisterBoxInterface $registerBox)
     {
@@ -20,6 +20,9 @@ class DIContainer
         $this->storage[$name] = $factory;
     }
 
+    /**
+     * @throws DIContainerException
+     */
     public function fabricate(string $name, ...$params)
     {
         if (!isset($this->storage[$name])) {

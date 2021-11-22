@@ -8,7 +8,7 @@ use core\exceptions\DataBaseException;
 
 class Layout extends Base
 {
-    private $joinTable = null;
+    private string $joinTable = "";
 
     public function __construct(DBDriverInterface $db)
     {

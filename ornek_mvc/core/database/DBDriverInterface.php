@@ -17,7 +17,7 @@ interface DBDriverInterface
      * @param array $params
      * @return mixed
      */
-    public function create(string $table, array $params);
+    public function create(string $table, array $params): mixed;
 
     /**
      * @param string $sql
@@ -25,7 +25,7 @@ interface DBDriverInterface
      * @param array $params
      * @return mixed
      */
-    public function read(string $sql, $fetch = self::FETCH_ALL, array $params = []);
+    public function read(string $sql, int $fetch = self::FETCH_ALL, array $params = []): mixed;
 
     /**
      * @param string $table
@@ -35,7 +35,7 @@ interface DBDriverInterface
      * @throws DataBaseException
      * @return mixed
      */
-    public function update(string $table, array $setParams, string $where, array $whereParams);
+    public function update(string $table, array $setParams, string $where, array $whereParams): mixed;
 
     /**
      * @param string $table
@@ -43,5 +43,5 @@ interface DBDriverInterface
      * @param array $whereParams
      * @return mixed
      */
-    public function delete(string $table, string $where, array $whereParams);
+    public function delete(string $table, string $where, array $whereParams): mixed;
 }

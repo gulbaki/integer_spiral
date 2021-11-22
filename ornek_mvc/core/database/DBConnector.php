@@ -7,7 +7,7 @@ use PDOException;
 
 abstract class DBConnector
 {
-    private static $pdo = null;
+    private static  $pdo = null;
 
     public static function getPdo()
     {
