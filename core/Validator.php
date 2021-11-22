@@ -100,7 +100,7 @@ class Validator
     protected function validateLength(string $value, array &$rules): void
     {
         $minLen = (int)($rules['min_length'] ?? 0);
-        $strLen = mb_strlen($value);
+        $strLen = strlen($value);
 
         if ($strLen < $minLen) {
             throw new ValidatorLessThanRequiredException($strLen, $minLen);
