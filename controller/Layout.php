@@ -51,7 +51,7 @@ class Layout extends Base
                 unset($createParams['x'], $createParams['y']);
                
 
-                var_dump($createParams);
+                
                 $insertId = $layoutService->create($createParams);
 
                 echo "layoutId: " . $insertId;
