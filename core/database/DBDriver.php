@@ -55,8 +55,7 @@ class DBDriver implements DBDriverInterface
 
         
         $statement = $this->db->prepare($sql);
-        var_dump($statement);
-        exit;
+        
         $statement->execute($params);
         //self::checkErrors($statement);
         
