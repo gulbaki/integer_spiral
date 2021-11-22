@@ -42,6 +42,8 @@ class Layout extends Base
         $msg = '';
         $errors = null;
        
+        var_dump($params);
+        exit;
         if ($this->request->isPost()) {
             try {
                 $createParams = $this->request->post();
