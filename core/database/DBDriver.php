@@ -53,13 +53,13 @@ class DBDriver implements DBDriverInterface
 
         $sql = "INSERT INTO $table $keys VALUES $values;";
 
-        var_dump($sql);
-        exit;
+        
         $statement = $this->db->prepare($sql);
 
         $statement->execute($params);
         self::checkErrors($statement);
-
+        var_dump($statement);
+        exit;
         return $this->db->lastInsertId();
     }
 
