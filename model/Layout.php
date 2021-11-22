@@ -22,7 +22,7 @@ class Layout extends Base
     {
         return $this->db->read(
             sprintf(
-                'SELECT %1$s.layout_matrix, %1$s.row, %1$s.col from %1$s  order by created_at desc;',
+                'SELECT %1$s.layout_id, %1$s.row, %1$s.col from %1$s  order by created_at desc;',
                 $this->tableName,
             )
         );
