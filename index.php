@@ -159,6 +159,8 @@ header('Access-Control-Allow-Headers: Origin, Content-Type, X-Auth-Token , Autho
 
 
 
+var_dump("test");
+exit;
 
 include_once 'config.php';
 
