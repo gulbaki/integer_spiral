@@ -52,6 +52,9 @@ class DBDriver implements DBDriverInterface
         $values = sprintf('(:%s)', implode(', :', $paramsKeys));
 
         $sql = "INSERT INTO $table $keys VALUES $values;";
+
+        var_dump($sql);
+        exit;
         $statement = $this->db->prepare($sql);
 
         $statement->execute($params);

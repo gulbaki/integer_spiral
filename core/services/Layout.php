@@ -88,8 +88,7 @@ class Layout extends Base
             );
         }
 
-        var_dump($fields);
-        exit;
+       
         return $this->mLayout->insert($this->validator->clear);
     }
 
