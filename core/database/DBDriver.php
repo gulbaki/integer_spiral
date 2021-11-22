@@ -58,7 +58,7 @@ class DBDriver implements DBDriverInterface
         var_dump($statement);
         exit;
         $statement->execute($params);
-        self::checkErrors($statement);
+        //self::checkErrors($statement);
         
         return $this->db->lastInsertId();
     }
