@@ -1,7 +1,7 @@
 <?php
 
 /**
- * @OA\Info(title="", version="1.0")
+ * @OA\Info(title="", version="1.0" )
  */
 
 namespace controller;
