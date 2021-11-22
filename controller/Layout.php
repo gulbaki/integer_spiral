@@ -49,7 +49,7 @@ class Layout extends Base
                 $createParams['col'] = $createParams['y'];
 
                 unset($createParams['x'], $createParams['y']);
-                $createParams['layout_matrix'] = html_entity_decode($createParams['layout_matrix']);
+               
 
                 var_dump($createParams);
                 $insertId = $layoutService->create($createParams);
