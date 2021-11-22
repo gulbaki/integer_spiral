@@ -62,9 +62,9 @@ header('Access-Control-Allow-Headers: Origin, Content-Type, X-Auth-Token , Autho
       window.ui = ui;
       window.swaggerUi = new SwaggerUi({
       url: url,
-      ...
       validatorUrl: null
     });
+
     };
   </script>
   </body>
