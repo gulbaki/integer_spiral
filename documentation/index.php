@@ -59,7 +59,7 @@ header('Access-Control-Allow-Headers: Origin, Content-Type, X-Auth-Token , Autho
         validatorUrl: "null"
       });
       // End Swagger UI call region
-
+      console.log( "test");
       window.ui = ui;
    
 
