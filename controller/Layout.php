@@ -17,7 +17,7 @@ class Layout extends Base
 {
     
      /**
-    * @OA\Post(path="/ornek_mvc/api/create-layout", tags={"Layout"},
+    * @OA\Post(path="/api/create-layout", tags={"Layout"},
     * @OA\RequestBody(
     *       @OA\MediaType(
     *           mediaType="multipart/form-data",
@@ -64,7 +64,7 @@ class Layout extends Base
     }
 
  /**
- * @OA\Get(path="/ornek_mvc/api/get-layout", tags={"Layout"},*
+ * @OA\Get(path="/api/get-layout", tags={"Layout"},*
  * @OA\Response (response="200", description="Success"),
  * @OA\Response (response="404", description="Not Found"),
  * )
@@ -91,7 +91,7 @@ class Layout extends Base
     }
 
     /**
-     * @OA\Get(path="/ornek_mvc/api/get-value-of-layout/{id}/{x}/{y}", tags={"Layout"},
+     * @OA\Get(path="/api/get-value-of-layout/{id}/{x}/{y}", tags={"Layout"},
      *   @OA\Parameter(
      *        parameter="layoutId",
      *        name="id",

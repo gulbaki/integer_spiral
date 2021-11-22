@@ -32,7 +32,7 @@ define('TITLE_LOGIN', 'Авторизация');
 define('TITLE_REGISTER',  'Регистрация');
 define('ADD_ARTICLE_TITLE', 'Добавить статью');
 define('DASHBOARD_PAGE_TITLE', 'Личный кабинет');
-define('ROOT', '/ornek_mvc');
+define('ROOT', '/');
 
 define('PAGE_NOT_FOUND', 'Ошибка 404 - страница не найдена!');
 
