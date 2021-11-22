@@ -77,8 +77,7 @@ class Layout extends Base
         ];
         $fields['layout_matrix'] = ($this->integerSpiral([[]], $fields['row'], $fields['col']));
         
-      var_dump($fields);
-      exit;
+     
         $this->params = $fields;
         $this->validator->validateByFields($fields);
 
