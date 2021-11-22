@@ -1,10 +1,5 @@
 <!-- HTML for static distribution bundle build -->
-<?php 
-header('Access-Control-Allow-Origin: *');
-header("Access-Control-Allow-Credentials: true");
-header('Access-Control-Allow-Methods: GET, PUT, POST, DELETE, OPTIONS');
-header('Access-Control-Max-Age: 1000');
-header('Access-Control-Allow-Headers: Origin, Content-Type, X-Auth-Token , Authorization');?>
+
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -55,15 +50,14 @@ header('Access-Control-Allow-Headers: Origin, Content-Type, X-Auth-Token , Autho
         plugins: [
           SwaggerUIBundle.plugins.DownloadUrl
         ],
-        layout: "StandaloneLayout",
-        validatorUrl: "null"
+        layout: "StandaloneLayout"
       });
       // End Swagger UI call region
-      console.log( "asdasd");
-      window.ui = ui;
-   
 
+      window.ui = ui;
     };
+
+    console.log("go");
   </script>
   </body>
 </html>
