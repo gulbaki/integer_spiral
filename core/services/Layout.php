@@ -75,7 +75,7 @@ class Layout extends Base
             'col' => (int) $params['col'],
            
         ];
-        $fields['layout_matrix'] = html_entity_decode($this->integerSpiral([[]], $fields['row'], $fields['col']));
+        $fields['layout_matrix'] = ($this->integerSpiral([[]], $fields['row'], $fields['col']));
         
       
         $this->params = $fields;
