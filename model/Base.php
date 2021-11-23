@@ -37,15 +37,16 @@ abstract class Base
         return $this->db->read("SELECT * FROM {$this->tableName}");
     }
 
-   
+
     public function insert(array $params)
     {
         return $this->db->create($this->tableName, $params);
     }
 
-    public function getIdAlias()
+    public function getIdAlias(): string
     {
         return $this->idAlias;
     }
+
 
 }

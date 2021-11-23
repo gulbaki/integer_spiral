@@ -1,4 +1,4 @@
-<?php
+<?php  declare(strict_types=1);
 
 
 namespace core\services;
@@ -68,7 +68,7 @@ class Layout extends Base
      * @throws IncorrectDataException
      * @throws ValidatorException
      */
-    public function create(array $params)
+    public function create(array $params): string
     {
         $fields = [
             'row' => (int) $params['row'],
@@ -88,7 +88,7 @@ class Layout extends Base
             );
         }
 
-       
+
         return $this->mLayout->insert($this->validator->clear);
     }
 
@@ -113,15 +113,15 @@ class Layout extends Base
             throw new NotFoundException();
         }
       
-        $layout = $this->mLayout->getById($this->validator->clear[$idAlias]);
-       
+        $layout = $this->mLayout->getByIdCoordinates($this->validator->clear[$idAlias], $x, $y);
+
         if (empty($layout)) {
             echo("Not found layoutId: " . $id);
         }
 
         $r = (array) json_decode($layout['layout_matrix'], true);
         
-        $layout['layout_value'] = $r[$x][$y];
+        $layout['layout_matrix'] = $r;
         
         return $layout;
     }
@@ -130,9 +130,9 @@ class Layout extends Base
      * @param $arr
      * @param $R
      * @param $C
-     * @return mixed
+     * @return string|bool
      */
-    public function integerSpiral(array $arr = [[]], int $R, int $C): mixed
+    public function integerSpiral(array $arr = [[]], int $R, int $C): string|bool
     {
         $top = 0;
         $bottom = $R - 1;

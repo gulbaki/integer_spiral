@@ -46,10 +46,11 @@ header('Access-Control-Allow-Headers: Origin, Content-Type, X-Auth-Token , Autho
     <script src="./swagger/swagger-ui-bundle.js" charset="UTF-8"> </script>
     <script src="./swagger/swagger-ui-standalone-preset.js" charset="UTF-8"> </script>
     <script>
+
     window.onload = function() {
       // Begin Swagger UI call region
       const ui = SwaggerUIBundle({
-        url: "https://integer-spiral.herokuapp.com/documentation/api.php", // http://localhost:8000
+        url:"http://localhost:8000/documentation/api.php", // http://localhost:8000
         dom_id: '#swagger-ui',
         deepLinking: true,
         presets: [

@@ -20,11 +20,11 @@ class DBDriver implements DBDriverInterface
     }
 
     /**
-     * @param false|PDOStatement $statement
+     * @param bool|PDOStatement $statement
      * @return void
      * @throws DataBaseException
      */
-    protected static function checkErrors($statement)
+    protected static function checkErrors(bool|PDOStatement $statement)
     {
         if ($statement === false) {
             throw new DataBaseException('Request failed!');

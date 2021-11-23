@@ -1,4 +1,4 @@
-<?php
+<?php declare(strict_types=1);
 
 /**
  * @OA\Info(title="", version="1.0")
@@ -15,8 +15,15 @@ use core\exceptions\ValidatorException;
 
 class Layout extends Base
 {
-    
-     /**
+    private $email;
+    public function __construct(string $email)
+    {
+
+        $this->ensureIsValidEmail($email);
+
+        $this->email = $email;
+    }
+    /**
     * @OA\Post(path="/api/create-layout", tags={"Layout"},
     * @OA\RequestBody(
     *       @OA\MediaType(
@@ -51,15 +58,18 @@ class Layout extends Base
                 unset($createParams['x'], $createParams['y']);
                
 
-                
                 $insertId = $layoutService->create($createParams);
 
-                echo "layoutId: " . $insertId;
-              
+
+
+
+                exit(json_encode(['message' => 'Insert id: ' . $insertId . '', 'success' => true]));
+
+
             } catch (IncorrectDataException $e) {
-                $msg = ARTICLE_SAVE_ERROR;
                 $errors = $e->getErrors();
-                print_r($errors);
+                exit(json_encode(['message' => 'Insert id: ' .  $errors  . '', 'success' => false]));
+
             }
           
         }
@@ -83,9 +93,11 @@ class Layout extends Base
 
         try {
             $layout = $layoutService->getAllPreviews();
-            print_r($layout);
+
+            exit(json_encode(['message' => $layout, 'success' => true]));
         } catch (LayoutNotFoundException $e) {
-            print_r($e->getMessage());
+            exit(json_encode(['message' => $e->getMessage(), 'success' => true]));
+
         }
 
        
@@ -133,17 +145,38 @@ class Layout extends Base
      */
     public function getValueOfLayout($id, $x, $y)
     {
+        try {
+            $layoutService = $this->container->fabricate('layout-service');
+            $layout = $layoutService->getOne($id, $x, $y);
+ // sprintf ile degıstırceksın bunları
+            exit(json_encode(['message' => 'layoutId:' . json_encode($layout['layout_matrix']) . ' x:' . $layout['row'] . ' y:' . $layout['col'], 'success' => true]));
+        } catch (LayoutNotFoundException $e) {
+            exit(json_encode(['message' => "Not Found: " . $x . ' or ' . $y . 'Coordinates or id:'. $id, 'success' => false]));
 
-        $layoutService = $this->container->fabricate('layout-service');
-
-        $layout = $layoutService->getOne($id, $x, $y);
-
-
-        if($layout['layout_value'] )
-            echo ("Coordinates: " .$layout['layout_value']);
-        else 
-            echo ("Not Found: " . $x . ' or ' . $y . ' Coordinates');
+        }
     }
-    
+
+
+    public static function fromString(string $email): self
+    {
+        return new self($email);
+    }
+
+    public function __toString(): string
+    {
+        return $this->email;
+    }
+
+    private function ensureIsValidEmail(string $email): void
+    {
+        if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
+            throw new InvalidArgumentException(
+                sprintf(
+                    '"%s" is not a valid email address',
+                    $email
+                )
+            );
+        }
+    }
 
 }
