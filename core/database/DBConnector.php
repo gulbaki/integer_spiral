@@ -16,8 +16,8 @@ abstract class DBConnector
             try {
           //      $url = parse_url(getenv("CLEARDB_DATABASE_URL"));
                  
-                $dsn = sprintf('%s:host=%s;dbname=%s', "mysql", "eu-cdbr-west-01.cleardb.com" , "heroku_6c71c1e987b6102");
-                $db = new PDO($dsn, "bf04bf2f2da686", "756a31b4");
+                $dsn = sprintf('%s:host=%s;dbname=%s', SCHEMA, HOST , DB_NAME);
+                $db = new PDO($dsn, DB_USER, DB_PASSWORD);
                 $db->exec('set names utf8;');
 
                 

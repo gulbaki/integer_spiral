@@ -118,13 +118,12 @@ class Layout extends Base
         if (empty($layout)) {
             echo("Not found layoutId: " . $id);
         }
-        
 
-        return $layout = (array) json_decode($layout['layout_matrix'], true);
+        $r = (array) json_decode($layout['layout_matrix'], true);
         
-      
+        $layout['layout_value'] = $r[$x][$y];
         
-        
+        return $layout;
     }
   
     /**
