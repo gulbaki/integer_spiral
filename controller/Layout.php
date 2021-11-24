@@ -15,14 +15,7 @@ use core\exceptions\ValidatorException;
 
 class Layout extends Base
 {
-    private $email;
-    public function __construct(string $email)
-    {
 
-        $this->ensureIsValidEmail($email);
-
-        $this->email = $email;
-    }
     /**
     * @OA\Post(path="/api/create-layout", tags={"Layout"},
     * @OA\RequestBody(
@@ -35,6 +28,7 @@ class Layout extends Base
     *   @OA\Response (response="404", description="Not Found"),
     * )
     */
+
     /**
      * @throws NotFoundException
      * @throws RequestException
@@ -45,9 +39,6 @@ class Layout extends Base
     {
       
         $layoutService = $this->container->fabricate('layout-service');
-       
-        $msg = '';
-        $errors = null;
       
         if ($this->request->isPost()) {
             try {
@@ -61,10 +52,9 @@ class Layout extends Base
                 $insertId = $layoutService->create($createParams);
 
 
-
-
                 exit(json_encode(['message' => 'Insert id: ' . $insertId . '', 'success' => true]));
 
+                    var_dump();
 
             } catch (IncorrectDataException $e) {
                 $errors = $e->getErrors();
@@ -88,7 +78,6 @@ class Layout extends Base
      */
     public function getLayout()
     {
-       
         $layoutService = $this->container->fabricate('layout-service');
 
         try {
@@ -99,8 +88,6 @@ class Layout extends Base
             exit(json_encode(['message' => $e->getMessage(), 'success' => true]));
 
         }
-
-       
 
     }
 
@@ -156,27 +143,5 @@ class Layout extends Base
         }
     }
 
-
-    public static function fromString(string $email): self
-    {
-        return new self($email);
-    }
-
-    public function __toString(): string
-    {
-        return $this->email;
-    }
-
-    private function ensureIsValidEmail(string $email): void
-    {
-        if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
-            throw new InvalidArgumentException(
-                sprintf(
-                    '"%s" is not a valid email address',
-                    $email
-                )
-            );
-        }
-    }
 
 }

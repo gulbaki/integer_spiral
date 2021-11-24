@@ -125,11 +125,11 @@ class Layout extends Base
         
         return $layout;
     }
-  
+
     /**
-     * @param $arr
-     * @param $R
-     * @param $C
+     * @param array $arr
+     * @param int $R
+     * @param int $C
      * @return string|bool
      */
     public function integerSpiral(array $arr = [[]], int $R, int $C): string|bool

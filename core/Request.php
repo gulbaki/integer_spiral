@@ -38,11 +38,11 @@ class Request
         $this->get = $_GET;
         $this->post = $_POST;
         $this->cookie = $_COOKIE;
-        $this->session = $_SESSION;
+      //  $this->session = $_SESSION;
         $this->files = $_FILES;
         $this->server = $_SERVER;
 
-        $this->processPath();
+        //$this->processPath();
     }
 
     /**
